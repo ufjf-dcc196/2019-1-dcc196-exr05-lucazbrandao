@@ -84,6 +84,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    
+    public void playerXWin(){
+        player_x_wins++;
+        txt_player_x_points.setText(String.valueOf(player_x_wins));
+        Toast.makeText(this, "Player X Win!", Toast.LENGTH_SHORT).show();
+        resetMatrix();
+    }
+
+    public void playerOWin(){
+        player_o_wins++;
+        txt_player_o_points.setText(String.valueOf(player_o_wins));
+        Toast.makeText(this, "Player O Win!", Toast.LENGTH_SHORT).show();
+        resetMatrix();
+    }
+
+    public void resetMatrix(){
+
+        for(int i=0; i<3; i++){
+            for (int j=0; j<3; j++){
+                matrix[i][j].setText("");
+            }
+        }
+        roundCounts = 0;
+        player_x_turn = true;
+    }
+
+    public void draw() {
+        Toast.makeText(this, "Draw!", Toast.LENGTH_SHORT).show();
+        resetMatrix();
+
+    }
 
 }
