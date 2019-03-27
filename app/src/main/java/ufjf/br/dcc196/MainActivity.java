@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,5 +53,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-   
+    public boolean checkWin() {
+        String[][] mat = new String[3][3];
+
+        for (int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                mat[i][j]=matrix[i][j].getText().toString();
+            }
+        }
+
+        for(int i=0; i<3; i++){
+            if (mat[i][0].equals(mat[i][1]) && mat[i][0].equals(mat[i][2]) && !mat[i][0].equals("") ) {
+                return true;
+            }
+        }
+
+        for(int i=0; i<3; i++){
+            if (mat[0][i].equals(mat[1][i]) && mat[0][i].equals(mat[2][i]) && !mat[0][i].equals("") ) {
+                return true;
+            }
+        }
+
+        if (mat[0][0].equals(mat[1][1]) && mat[0][0].equals(mat[2][2]) && !mat[0][0].equals("") ){
+            return true;
+        }
+        if (mat[0][2].equals(mat[1][1]) && mat[0][2].equals(mat[2][0]) && !mat[0][2].equals("") ){
+            return true;
+        }
+
+        return false;
+    }
+
+    
+
 }
