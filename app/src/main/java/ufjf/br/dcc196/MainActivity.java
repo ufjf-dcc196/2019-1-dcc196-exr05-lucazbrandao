@@ -49,7 +49,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        Button b =  (Button) v;
 
+        if (!b.getText().toString().equals("")) {
+            return;
+        }
+
+        if (player_x_turn){
+            b.setText("X");
+        } else {
+            b.setText("O");
+        }
+        roundCounts++;
+        if (checkWin()) {
+            if (player_x_turn) {
+                playerXWin();
+            } else {
+                playerOWin();
+            }
+        } else
+        if (roundCounts == 9) {
+            draw();
+        } else {
+            player_x_turn = !player_x_turn;
+        }
 
     }
 
